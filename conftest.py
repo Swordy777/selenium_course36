@@ -26,11 +26,11 @@ def browser(request):
     options = Options()
     options.add_experimental_option('prefs',{'intl.accept_languages': request.config.getoption("--language")})
     # ChromeDriver version in this repo: 111.0.5563.64 (might not work wuth some versions of Chrome)
-    # In case you don't have a chromedriver installed or added to Path, use the following lines 
-    # (and don't forget to comment the other browser initialization):
+    # In case you are using Linux/WSL and don't have a chromedriver installed, use the following lines:
     #service = Service("/chromedriver/stable/chromedriver")
     #options.add_argument("--no-sandbox")
     #options.add_argument("--disable-gpu")
     #browser = webdriver.Chrome(options=options, service=service)
-    browser = webdriver.Chrome()
+    # (and don't forget to comment the other browser initialization):
+    browser = webdriver.Chrome(options=options)
     return browser
